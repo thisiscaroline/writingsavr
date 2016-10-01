@@ -5,6 +5,34 @@ import os, shutil, sys
 # Global variables
 saveFile, sourceDir, destDir = "", "", ""
 
+# Main loop
+def main():
+		
+	# Runs until option for Quit is returned
+	while True:
+		
+		# Show the menu
+		option = int(menu())
+		
+		# Remove breaks after testing
+		if option == 1:
+			# Copy file to directory
+			copyToDir()
+		elif option == 2:
+			# Choose file
+			chooseFile()
+		elif option == 3:
+			# Choose directory
+			chooseDir()
+		elif option == 4:
+			# Displays current variables
+			displayStats()
+		elif option == 5:
+			# Quit
+			sys.exit()
+		else:
+			print("Invalid response. Please enter a number!\n")
+
 # Copies a given file to another directory
 def copyToDir():
 	
@@ -44,7 +72,7 @@ def chooseDir():
 	
 	global sourceDir, destDir
 	
-	print("Would you like to change the SOURCE or DESTINATION directory, or quit?\n >> ", end="")
+	print("Would you like to change the SOURCE or DESTINATION directory, or quit?\n>> ", end="")
 	ans = input()
 	
 	if ans.lower() == "quit":
@@ -92,30 +120,8 @@ def menu():
 	5. Quit''')
 	
 	print("\n>> ", end="")
-	return input()	
+	return input()
 
-# Runs until option for Quit is returned
-while True:
-	
-	# Show the menu
-	option = int(menu())
-	
-	# Remove breaks after testing
-	if option == 1:
-		# Copy file to directory
-		copyToDir()
-	elif option == 2:
-		# Choose file
-		chooseFile()
-	elif option == 3:
-		# Choose directory
-		chooseDir()
-	elif option == 4:
-		# Displays current variables
-		displayStats()
-	elif option == 5:
-		# Quit
-		sys.exit()
-	else:
-		print("Invalid response. Please enter a number!\n")
-		break
+# Start program from main
+if __name__ == '__main__':
+	main()
