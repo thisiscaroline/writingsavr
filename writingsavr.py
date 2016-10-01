@@ -5,6 +5,8 @@ import os, shutil, sys
 # Global variables
 fileInit = 0
 dirInit = 0
+saveFile = ""
+saveDir = ""
 
 # Navigate to folder on hard drive
 print("Enter a directory to get files from. \n>> ", end="")
@@ -14,7 +16,7 @@ os.chdir(sourceDir)
 # Copies a given file to Dropbox
 def copyToDropbox(file):
 	
-	global dirInit
+	global dirInit, saveDir
 	
 	if dirInit == 0:
 		print("Where would you like to save this? Enter in the full path name.\n>> ", end="")
@@ -26,6 +28,8 @@ def copyToDropbox(file):
 
 print("Press any key, or hit ENTER to quit: \n>> ", end="")
 while input() != "":
+
+	global saveFile
 
 	# If fileInit == 0, ask for filename
 	if fileInit == 0:
