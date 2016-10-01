@@ -85,7 +85,8 @@ def copyToDir():
 		if filename.find(saveFile) != -1: 					# Found a match
 			print("\t\x1b[1;32mFILE: \x1b[0m" + filename)
 			shutil.copy(filename, destDir)					# Doing the copying
-			return "\n\t\t\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n"
+			print("\n\t\t\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n")
+			return
 		else:
 			print("\tFILE: " + filename)
 	
