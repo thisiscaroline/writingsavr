@@ -7,7 +7,10 @@ saveFile, sourceDir, destDir = "", "", ""
 
 # Main loop
 def main():
-		
+	
+	print("Lazy option (Y/N)?\n>> ", end="")
+	lazy(input())
+	
 	# Runs until option for Quit is returned
 	while True:
 		
@@ -33,6 +36,28 @@ def main():
 		else:
 			print("Invalid response. Please enter a number!\n")
 
+# Lazy variable fill
+def lazy(ans):
+
+	if ans.lower() == 'y':
+		# Hard-code your file paths here
+		# saveFile, sourceDir, destDir = "", "", ""
+		return
+			
+# Prints a menu of options and returns user's choice
+def menu():
+
+	print('''\nChoose an option from below:
+	
+	1. Copy file to directory
+	2. Choose file
+	3. Choose directory
+	4. Display current locations
+	5. Quit''')
+	
+	print("\n>> ", end="")
+	return input()
+			
 # Copies a given file to another directory
 def copyToDir():
 	
@@ -57,16 +82,30 @@ def copyToDir():
 	for filename in os.listdir():
 		
 		if filename.find(saveFile) != -1: 					# Found a match
-			print("\t\x1b[1;32mFILE: \x1b[0m" + filename) 	# Linux-specific
-			shutil.copy(filename, destDir)					# Does the copying
-			print("\n\t\t\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n")
-			return
+			print("\t\x1b[1;32mFILE: \x1b[0m" + filename)
+			shutil.copy(filename, destDir)					# Doing the copying
+			return "\n\t\t\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n"
 		else:
 			print("\tFILE: " + filename)
 	
 	# If you are here, the file was not found
 	print("\nError 404: File not found!\n")
 
+# Sets or changes the target file
+def chooseFile():
+
+	global saveFile
+
+	print("Your file is currently \x1b[1;33m" + saveFile + "\x1b[0m. Would you like to change it?\n>> ", end="")
+	ans = input()
+	
+	if ans.lower() == "no" or ans.lower() == "n":
+		return
+	else:
+		print("Enter the filename you want saved.\n>> ", end="")
+		saveFile = input()
+		print("All right, your file is " + saveFile + ".\n")
+	
 # Sets or changes the directory
 def chooseDir():
 	
@@ -88,39 +127,10 @@ def chooseDir():
 		destDir = tempPath
 	else:
 		return "Invalid option entered!\n"
-		
-# Sets or changes the target file
-def chooseFile():
-
-	global saveFile
-
-	print("Your file is currently \x1b[1;33m" + saveFile + "\x1b[0m. Would you like to change it?\n>> ", end="")
-	ans = input()
-	
-	if ans.lower() == "no" or ans.lower() == "n":
-		return
-	else:
-		print("Enter the filename you want saved.\n>> ", end="")
-		saveFile = input()
-		print("All right, your file is " + saveFile + ".\n")
 	
 # Displays what the current variables are set to
 def displayStats():
 	print("\n\x1b[1;33mFILE\x1b[0m: " + saveFile + "\n\x1b[1;33mSOURCE DIR\x1b[0m: " + sourceDir + "\n\x1b[1;33mDEST DIR\x1b[0m: " + destDir)
-
-# Prints a menu of options and returns user's choice
-def menu():
-
-	print('''\nChoose an option from below:
-	
-	1. Copy file to directory
-	2. Choose file
-	3. Choose directory
-	4. Display current locations
-	5. Quit''')
-	
-	print("\n>> ", end="")
-	return input()
 
 # Start program from main
 if __name__ == '__main__':
