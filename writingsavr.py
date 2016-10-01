@@ -4,24 +4,22 @@ import os, shutil, sys
 
 # Global variables
 # fileInit, dirInt = 0, 0
-saveFile, sourceDir, destDir = "", ""
+saveFile, sourceDir, destDir = "", "", ""
 
 # Copies a given file to another directory
 def copyToDir():
 	
-	global saveFile, destDir
+	global saveFile, sourceDir, destDir
 
-	# Check to see if saveFile has been filled in
+	# Check saveFile, sourceDir, destDir
 	if saveFile == "":
-		# Have not entered in a file
-		print("Please enter in a file to save!\n")
-		return
+		return "Please choose a file to save!\n"
 
-	# Check to see if destDir has been filled in
+	if sourceDir == "":
+		return "Please choose a directory to save your work from!\n"
+		
 	if destDir == "":
-		# Have not entered in a directory
-		print("Please choose a directory to save your work!\n")
-		return
+		return "Please choose a directory to save your work to!\n"
 	
 	# Navigate to directory on hard drive
 	os.chdir(sourceDir)
@@ -38,19 +36,11 @@ def copyToDir():
 			break
 		else:
 			print("FILE: " + filename)
-	
-	
-	'''
-	global dirInit, destDir
-	
-	if dirInit == 0:
-		print("Where would you like to save this? Enter in the full path name.\n>> ", end="")
-		destDir = input()
-		dirInit = 1 # One-time prompt
-	'''
 
+###
 # TODO: Combine both directory functions, since they're basically the same thing
-	
+###
+
 # Sets or changes source directory
 def chooseSourceDir():
 	
@@ -62,12 +52,12 @@ def chooseSourceDir():
 	if ans.lower() == "no" or ans.lower() == "n":
 		return
 	else:
-		print("Enter in the full path name of the directory you want to save from.\n>> ", end="")
+		print("Enter in the full path name of the directory you want to save FROM.\n>> ", end="")
 		sourceDir = input()
 		print("All right, your new source directory is " + sourceDir + ".\n")
 	
 # Sets or changes destination directory
-def changeDir():
+def chooseDestDir():
 
 	global destDir
 	
@@ -77,11 +67,11 @@ def changeDir():
 	if ans.lower() == "no" or ans.lower() == "n":
 		return
 	else:
-		print("Enter in the full path name of the directory you want to save to.\n>> ", end="")
+		print("Enter in the full path name of the directory you want to save TO.\n>> ", end="")
 		destDir = input()
 		print("All right, your new destination directory is " + destDir + ".\n")
 
-# Changes the target file to be saved
+# Sets or changes the target file
 def chooseFile():
 
 	global saveFile
@@ -128,9 +118,11 @@ while True:
 		break
 	elif option == 3:
 		# Choose source directory
+		chooseSourceDir()
 		break
 	elif option == 4:
 		# Choose dest directory
+		chooseDestDir()
 		break
 	elif option == 5:
 		# Quit
