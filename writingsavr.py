@@ -26,11 +26,23 @@ def copyToDropbox(file):
 	shutil.copy(filename, saveDir)
 	print("\n\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto Dropbox.\x1b[0m\n")
 
+def menu():
+	print('''\nChoose an option from below:
+	
+	1. Change file
+	2. Change source directory
+	3. Change destination directory
+	4. Quit''')
+	sys.exit()
+	
+
 print("Press any key, or hit ENTER to quit: \n>> ", end="")
 while input() != "":
 
 	global saveFile
 
+	menu()
+	
 	# If fileInit == 0, ask for filename
 	if fileInit == 0:
 		print("What file would you like to save to Dropbox? \n>> ", end="")
