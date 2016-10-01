@@ -32,7 +32,7 @@ def copyToDir():
 			print("\t\x1b[1;32mFILE: \x1b[0m" + filename) 	# Linux-specific
 			shutil.copy(filename, destDir)					# Does the copying
 			print("\n\t\t\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n")
-			break
+			return
 		else:
 			print("\tFILE: " + filename)
 	
