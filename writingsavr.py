@@ -3,7 +3,6 @@
 import os, shutil, sys
 
 # Global variables
-# fileInit, dirInt = 0, 0
 saveFile, sourceDir, destDir = "", "", ""
 
 # Copies a given file to another directory
@@ -86,6 +85,9 @@ def chooseFile():
 		saveFile = input()
 		print("All right, your new file is " + saveFile + ".\n")
 	
+# Displays what the current variables are set to
+def displayStats():
+	print("\n\x1b[1;33mFILE\x1b[0m: " + saveFile + "\n\x1b[1;33mSOURCE DIR\x1b[0m: " + sourceDir + "\n\x1b[1;33mDEST DIR\x1b[0m: " + destDir)
 
 # Prints a menu of options and returns user's choice
 def menu():
@@ -95,8 +97,9 @@ def menu():
 	1. Copy file to directory
 	2. Choose file
 	3. Choose source directory
-	3. Choose destination directory
-	4. Quit''')
+	4. Choose destination directory
+	5. Display current variable stats
+	6. Quit''')
 	
 	print("\n>> ", end="")
 	return input()	
@@ -111,20 +114,19 @@ while True:
 	if option == 1:
 		# Copy file to directory
 		copyToDir()
-		break
 	elif option == 2:
 		# Choose file
 		chooseFile()
-		break
 	elif option == 3:
 		# Choose source directory
 		chooseSourceDir()
-		break
 	elif option == 4:
 		# Choose dest directory
 		chooseDestDir()
-		break
 	elif option == 5:
+		# Displays current variables
+		displayStats()
+	elif option == 6:
 		# Quit
 		sys.exit()
 	else:
