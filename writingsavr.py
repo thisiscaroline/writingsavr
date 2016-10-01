@@ -20,21 +20,24 @@ def copyToDir():
 	if destDir == "":
 		return "Please choose a directory to save your work to!\n"
 	
-	# Navigate to directory on hard drive
+	# Navigate to source directory on hard drive
 	os.chdir(sourceDir)
 	
-	print("\nBeginning to search directory...")
+	print("\nBeginning to search directory...\n")
 	
 	# Search the source directory
 	for filename in os.listdir():
 		
-		if filename.find(saveFile) != -1: 				# Found a match
-			print("\x1b[1;32mFILE: \x1b[0m" + filename) # Linux-specific
-			shutil.copy(filename, destDir)				# Does the copying
-			print("\n\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n")
+		if filename.find(saveFile) != -1: 					# Found a match
+			print("\t\x1b[1;32mFILE: \x1b[0m" + filename) 	# Linux-specific
+			shutil.copy(filename, destDir)					# Does the copying
+			print("\n\t\t\x1b[1;32mSuccessfully copied\x1b[0m " + filename + " \x1b[1;32mto new directory.\x1b[0m\n")
 			break
 		else:
-			print("FILE: " + filename)
+			print("\tFILE: " + filename)
+	
+	# If you are here, the file was not found
+	print("\nError 404: File not found!\n")
 
 ###
 # TODO: Combine both directory functions, since they're basically the same thing
@@ -81,9 +84,9 @@ def chooseFile():
 	if ans.lower() == "no" or ans.lower() == "n":
 		return
 	else:
-		print("Enter in the full path name of the file you want to save.\n>> ", end="")
+		print("Enter the filename you want saved.\n>> ", end="")
 		saveFile = input()
-		print("All right, your new file is " + saveFile + ".\n")
+		print("All right, your file is " + saveFile + ".\n")
 	
 # Displays what the current variables are set to
 def displayStats():
@@ -98,7 +101,7 @@ def menu():
 	2. Choose file
 	3. Choose source directory
 	4. Choose destination directory
-	5. Display current variable stats
+	5. Display current locations
 	6. Quit''')
 	
 	print("\n>> ", end="")
