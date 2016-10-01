@@ -39,40 +39,28 @@ def copyToDir():
 	# If you are here, the file was not found
 	print("\nError 404: File not found!\n")
 
-###
-# TODO: Combine both directory functions, since they're basically the same thing
-###
-
-# Sets or changes source directory
-def chooseSourceDir():
+# Sets or changes the directory
+def chooseDir():
 	
-	global sourceDir
+	global sourceDir, destDir
 	
-	print("Your source directory is currently \x1b[1;33m" + sourceDir + "\x1b[0m. Would you like to change it?\n>> ", end="")
+	print("Would you like to change the SOURCE or DESTINATION directory, or quit?\n >> ", end="")
 	ans = input()
 	
-	if ans.lower() == "no" or ans.lower() == "n":
+	if ans.lower() == "quit":
 		return
 	else:
-		print("Enter in the full path name of the directory you want to save FROM.\n>> ", end="")
-		sourceDir = input()
-		print("All right, your new source directory is " + sourceDir + ".\n")
-	
-# Sets or changes destination directory
-def chooseDestDir():
+		print("Enter in the directory's full path name.\n>> ", end="")
+		tempPath = input()
+		print("All right, your new directory is " + tempPath + ".\n")
 
-	global destDir
-	
-	print("Your destination directory is currently \x1b[1;33m" + destDir + "\x1b[0m. Would you like to change it?\n>> ", end="")
-	ans = input()
-	
-	if ans.lower() == "no" or ans.lower() == "n":
-		return
+	if ans.lower() == "source":
+		sourceDir = tempPath
+	elif ans.lower() == "dest" or ans.lower() == "destination":
+		destDir = tempPath
 	else:
-		print("Enter in the full path name of the directory you want to save TO.\n>> ", end="")
-		destDir = input()
-		print("All right, your new destination directory is " + destDir + ".\n")
-
+		return "Invalid option entered!\n"
+		
 # Sets or changes the target file
 def chooseFile():
 
@@ -99,10 +87,9 @@ def menu():
 	
 	1. Copy file to directory
 	2. Choose file
-	3. Choose source directory
-	4. Choose destination directory
-	5. Display current locations
-	6. Quit''')
+	3. Choose directory
+	4. Display current locations
+	5. Quit''')
 	
 	print("\n>> ", end="")
 	return input()	
@@ -121,15 +108,12 @@ while True:
 		# Choose file
 		chooseFile()
 	elif option == 3:
-		# Choose source directory
-		chooseSourceDir()
+		# Choose directory
+		chooseDir()
 	elif option == 4:
-		# Choose dest directory
-		chooseDestDir()
-	elif option == 5:
 		# Displays current variables
 		displayStats()
-	elif option == 6:
+	elif option == 5:
 		# Quit
 		sys.exit()
 	else:
