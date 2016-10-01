@@ -39,6 +39,8 @@ def main():
 # Lazy variable fill, hard-code your file paths here
 def lazy(ans):
 
+	global saveFile, sourceDir, destDir
+
 	if ans.lower() == 'y':
 		# saveFile, sourceDir, destDir = "", "", ""
 		return
