@@ -36,11 +36,10 @@ def main():
 		else:
 			print("Invalid response. Please enter a number!\n")
 
-# Lazy variable fill
+# Lazy variable fill, hard-code your file paths here
 def lazy(ans):
 
 	if ans.lower() == 'y':
-		# Hard-code your file paths here
 		# saveFile, sourceDir, destDir = "", "", ""
 		return
 			
