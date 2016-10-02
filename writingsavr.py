@@ -66,13 +66,13 @@ def copyToDir():
 
 	# Check saveFile, sourceDir, destDir
 	if saveFile == "":
-		return "Please choose a file to save!\n"
-
+		return print("Please choose a file to save!\n")
+		
 	if sourceDir == "":
-		return "Please choose a directory to save your work from!\n"
+		return print("Please choose a directory to save your work from!\n")
 		
 	if destDir == "":
-		return "Please choose a directory to save your work to!\n"
+		return print("Please choose a directory to save your work to!\n")
 	
 	# Navigate to source directory on hard drive
 	os.chdir(sourceDir)
