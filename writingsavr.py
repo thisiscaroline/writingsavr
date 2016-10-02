@@ -74,7 +74,7 @@ def copyToDir():
 	if destDir == "":
 		return print("Please choose a directory to save your work to!\n")
 	
-	# Navigate to source directory on hard drive
+	# Navigate to source directory
 	os.chdir(sourceDir)
 	
 	print("\nBeginning to search directory...\n")
