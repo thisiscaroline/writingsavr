@@ -1,4 +1,4 @@
-# Save a file to two folders
+# Save a file to another folder
 
 import os, shutil, sys
 
@@ -17,7 +17,6 @@ def main():
 		# Show the menu
 		option = int(menu())
 		
-		# Remove breaks after testing
 		if option == 1:
 			# Copy file to directory
 			copyToDir()
