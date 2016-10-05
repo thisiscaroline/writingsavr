@@ -127,7 +127,7 @@ def chooseDir():
 	elif ans.lower() == "dest" or ans.lower() == "destination":
 		destDir = tempPath
 	else:
-		return "Invalid option entered!\n"
+		return print("Invalid option entered!\n")
 	
 # Displays what the current variables are set to
 def displayStats():
